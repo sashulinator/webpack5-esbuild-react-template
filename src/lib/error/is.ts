@@ -1,4 +1,4 @@
-import { isObject } from 'lodash'
+import { isObject } from '@savchenko91/schema-validator'
 
 export function hasCode(input: unknown): input is Error & { code: string } {
   return isObject(input) && 'code' in input

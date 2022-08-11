@@ -1,21 +1,27 @@
+import { DARK_THEME, FontsVTBGroup } from '@admiral-ds/react-ui'
+
+import App from './app'
 import GetUser from './get-user'
 import ReactQuery from './react-query'
-import React, { lazy } from 'react'
-import { createRoot } from 'react-dom/client'
-
-const App = lazy(async () => import('./app'))
+import React from 'react'
+import { render } from 'react-dom'
+import { ThemeProvider } from 'styled-components'
 
 const rootElement = document.getElementById('root')
 
 if (rootElement) {
-  const root = createRoot(rootElement)
-
-  root.render(
-    <ReactQuery>
-      <GetUser>
-        <App />
-      </GetUser>
-    </ReactQuery>
+  render(
+    <React.StrictMode>
+      <ReactQuery>
+        <ThemeProvider theme={DARK_THEME}>
+          <GetUser>
+            <FontsVTBGroup />
+            <App />
+          </GetUser>
+        </ThemeProvider>
+      </ReactQuery>
+    </React.StrictMode>,
+    rootElement
   )
 }
 
