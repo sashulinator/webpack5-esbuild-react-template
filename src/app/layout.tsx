@@ -31,14 +31,14 @@ export default function Layer(): null | JSX.Element {
 
   setPreviousRoute(ROUTES)
 
-  // если раут не найден то страница NotFound
-  const layout = getCurrent(ROUTES)?.PAYLOAD.layout.sort() || ['header', 'main', 'nav']
+  const notFoundLayout = ['main']
+  const layout = getCurrent(ROUTES)?.PAYLOAD.layout.sort() || notFoundLayout
 
   return (
     <PerfectScrollbar className={clsx('Layout', layout.join('-'))} style={{ zIndex: 300 }}>
       <DocumentTitle />
-      {layout.includes('header') && <>Header</>}
-      {layout.includes('nav') && <>NavPanel</>}
+      {layout.includes('header') && <header style={{ height: '100px' }}>Header</header>}
+      {layout.includes('nav') && <div className="NavPanel">NavPanel</div>}
       <RootRoutes />
       <ToastContainer />
     </PerfectScrollbar>

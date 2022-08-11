@@ -40,3 +40,23 @@
   justify-content: center !important;
   align-items: center !important;
 }
+
+.fcs {
+  display: flex;
+  justify-content: start;
+}
+
+.fce {
+  display: flex;
+  justify-content: end;
+}
+
+.fis {
+  display: flex;
+  align-items: start;
+}
+
+.fie {
+  display: flex;
+  align-items: end;
+}

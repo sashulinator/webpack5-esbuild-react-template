@@ -13,7 +13,7 @@ const ROUTES = {
     name: 'User profile',
     path: '/user-profile',
     payload: {
-      layout: ['main', 'nav', 'header'],
+      layout: ['main'],
     },
   }),
   // return id ? `${this.PATH}/${id}` : this.PATH
