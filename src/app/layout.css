@@ -2,6 +2,8 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
+  --headerHeight: 80;
+  --navPanel_size: 200;
 }
 
 /*
@@ -23,10 +25,9 @@
 .Layout.header-main {
   display: grid;
   grid-template-areas:
-    'header header header'
-    'main main main';
+    'header'
+    'main';
   grid-template-rows: calc(var(--headerHeight) * 1px) 1fr;
-  grid-template-columns: calc(var(--navPanel_size * 1px)) 1fr;
 }
 
 /*
@@ -53,6 +54,7 @@
 }
 
 header {
+  grid-area: header;
   height: calc(var(--headerHeight) * 1px);
   width: 100%;
   position: fixed;
