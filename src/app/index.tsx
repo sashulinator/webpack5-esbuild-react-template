@@ -1,7 +1,7 @@
 import { DARK_THEME, FontsVTBGroup } from '@admiral-ds/react-ui'
 
 import App from './app'
-import GetUser from './get-user'
+// import GetUser from './get-user'
 import ReactQuery from './react-query'
 import React from 'react'
 import { render } from 'react-dom'
@@ -14,10 +14,10 @@ if (rootElement) {
     <React.StrictMode>
       <ReactQuery>
         <ThemeProvider theme={DARK_THEME}>
-          <GetUser>
-            <FontsVTBGroup />
-            <App />
-          </GetUser>
+          {/* <GetUser> */}
+          <FontsVTBGroup />
+          <App />
+          {/* </GetUser> */}
         </ThemeProvider>
       </ReactQuery>
     </React.StrictMode>,

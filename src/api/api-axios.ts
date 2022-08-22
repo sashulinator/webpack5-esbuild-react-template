@@ -1,4 +1,4 @@
-import { LoginResponse, Transfer } from './types'
+import { LoginResponse } from './types'
 import axios from 'axios'
 import { stringify } from 'qs'
 
@@ -12,15 +12,15 @@ const api = axios.create({
 api.defaults.headers.common['Content-Type'] = 'application/json'
 
 export const refreshAccessTokenFn = async () => {
-  const response = await api.post<Transfer<LoginResponse>>('api/auth/refresh')
-  localStorage.setItem('userRole', response.data.dataBlock.role)
+  const response = await api.post<LoginResponse>('api/auth/refresh')
+  localStorage.setItem('access_token', response.data.access_token)
+  localStorage.setItem('refresh_token', response.data.refresh_token)
   return response.data
 }
 
 api.interceptors.request.use((request) => {
   if (request.headers) {
-    request.headers['userRole'] = localStorage.getItem('userRole') || ''
-    request.headers['user'] = 'USER'
+    request.headers['Authorization'] = `Bearer ${localStorage.getItem('access_token') || ''}`
   }
   return request
 })

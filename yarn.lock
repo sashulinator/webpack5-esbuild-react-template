@@ -21,7 +21,7 @@
   resolved "https://registry.yarnpkg.com/@admiral-ds/icons/-/icons-2.1.0.tgz#6b12abd377709a32d0735b40cb1461a743cace0e"
   integrity sha512-FqxWhNol3fLRa6lHElsQSJ04VXuHTqpWCqGSbiRSggr7/e0O0lL5dZD14pJlC0Qtbg/bmmW2pFEtTjGy/Deg2g==
 
-"@admiral-ds/react-ui@^1.9.0":
+"@admiral-ds/react-ui@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@admiral-ds/react-ui/-/react-ui-1.9.0.tgz#91ab13cf8c64f437c95969283618e596fe9880dd"
   integrity sha512-aVc6TaBEw2Rv7ngbCyj1OnmvsWv/bZYhNvqYdP8z6Icp2uVNpmf/to3EQejuZBwfVNNl/xeQgDW/+s/OMAL5bw==
@@ -1687,6 +1687,18 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@superset-ui/embedded-sdk@^0.1.0-alpha.7":
+  version "0.1.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@superset-ui/embedded-sdk/-/embedded-sdk-0.1.0-alpha.7.tgz#3bdc21939561b38aa21003275d1abf2f4dbed06d"
+  integrity sha512-sBzfSnPvRw15D6A053t4gpKDydHaAjyn88By1Z3Vl3PWZScW6sTHh8n/5A69qMSJVorqFQ3g0IUquTF8sutGEQ==
+  dependencies:
+    "@superset-ui/switchboard" "^0.18.26-0"
+
+"@superset-ui/switchboard@^0.18.26-0":
+  version "0.18.26-0"
+  resolved "https://registry.yarnpkg.com/@superset-ui/switchboard/-/switchboard-0.18.26-0.tgz#fac4a0eaa0f7266219c8c6f212d74c1e823065a2"
+  integrity sha512-MYvigrspA0EgNU6tA9UrsXcrUYid9YktsbIPx/D4Xd5cWWrJrJl303imQ/SIZbC25faJCd2gL30ORll60Yz3Ww==
+
 "@svgr/babel-plugin-add-jsx-attribute@^6.3.1":
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-6.3.1.tgz#b9a5d84902be75a05ede92e70b338d28ab63fa74"
@@ -2762,6 +2774,11 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
+base64-js@^1.3.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
+
 base@^0.11.1:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/base/-/base-0.11.2.tgz#7bde5ced145b6d551a90db87f83c558b4eb48a8f"
@@ -2920,6 +2937,14 @@ buffer-indexof@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
+
+buffer@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
+  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.2.1"
 
 bytes@3.0.0:
   version "3.0.0"
@@ -5081,6 +5106,11 @@ icss-utils@^5.0.0, icss-utils@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/icss-utils/-/icss-utils-5.1.0.tgz#c6be6858abd013d768e98366ae47e25d5887b1ae"
   integrity sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==
+
+ieee754@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 ignore@^4.0.6:
   version "4.0.6"

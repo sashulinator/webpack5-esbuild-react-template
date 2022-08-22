@@ -3,8 +3,8 @@ import { ErrorWithCode } from '@savchenko91/schema-validator'
 export type QueryError = Error | ErrorWithCode
 
 export interface LoginResponse {
-  role: string
-  email: string
+  access_token: string
+  refresh_token: string
 }
 
 export interface RegisterResponse {

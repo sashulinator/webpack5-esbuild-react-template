@@ -4,16 +4,21 @@ import axios from 'axios'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
 
-import { LoginResponse, Transfer } from '@/api/types'
+import { LoginResponse } from '@/api/types'
 import history from '@/app/history'
 import { errorMessage } from '@/shared/toast'
 
 export default function Login(): JSX.Element {
   async function onSubmit(data: Record<string, unknown>) {
     try {
-      const response = await axios.post<Transfer<LoginResponse>>('api/auth', data)
-      localStorage.setItem('userRole', response.data.dataBlock.role)
-      history.push('/')
+      const response = await axios.post<LoginResponse>('api/v1/security/login', {
+        ...data,
+        provider: 'db',
+        refresh: true,
+      })
+      localStorage.setItem('access_token', response.data.access_token)
+      localStorage.setItem('refresh_token', response.data.refresh_token)
+      history.push('/analytic-1')
     } catch (e) {
       errorMessage('Неверный логин или пароль')
     }
@@ -30,7 +35,7 @@ export default function Login(): JSX.Element {
                 <div>
                   <div>Service Name</div>
                 </div>
-                <Field<string> name="email" required component="input" />
+                <Field<string> name="username" required component="input" />
                 <Field<string> name="password" required component="input" />
                 <button type="submit">login</button>
               </div>
