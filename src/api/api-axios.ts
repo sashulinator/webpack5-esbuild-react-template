@@ -12,15 +12,18 @@ const api = axios.create({
 api.defaults.headers.common['Content-Type'] = 'application/json'
 
 export const refreshAccessTokenFn = async () => {
+  localStorage.removeItem('access_token')
   const response = await api.post<LoginResponse>('api/v1/security/refresh')
   localStorage.setItem('access_token', response.data.access_token)
-  localStorage.setItem('refresh_token', response.data.refresh_token)
+  // localStorage.setItem('refresh_token', response.data.refresh_token)
   return response.data
 }
 
 api.interceptors.request.use((request) => {
   if (request.headers) {
-    request.headers['Authorization'] = `Bearer ${localStorage.getItem('access_token') || ''}`
+    request.headers['Authorization'] = `Bearer ${
+      localStorage.getItem('access_token') || localStorage.getItem('refresh_token') || ''
+    }`
   }
   return request
 })
