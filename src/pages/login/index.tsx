@@ -33,7 +33,7 @@ export default function Login(): JSX.Element {
             <form onSubmit={formProps.handleSubmit}>
               <div style={{ width: '300px', display: 'flex', flexDirection: 'column' }}>
                 <div>
-                  <div>Service Name</div>
+                  <div>Analitics</div>
                 </div>
                 <Field<string> name="username" required component="input" />
                 <Field<string> name="password" required component="input" />
