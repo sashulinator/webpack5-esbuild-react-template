@@ -7,7 +7,7 @@ module.exports = {
   devServer: {
     hot: true,
     open: true,
-    port: 3001,
+    port: 3003,
     historyApiFallback: true,
     proxy: {
       '/api/v1': 'http://10.4.40.3:8088',
