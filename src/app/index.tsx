@@ -1,4 +1,4 @@
-import { DARK_THEME, FontsVTBGroup } from '@admiral-ds/react-ui'
+import { DropdownProvider, FontsVTBGroup, LIGHT_THEME } from '@admiral-ds/react-ui'
 
 import App from './app'
 // import GetUser from './get-user'
@@ -12,14 +12,16 @@ const rootElement = document.getElementById('root')
 if (rootElement) {
   render(
     <React.StrictMode>
-      <ReactQuery>
-        <ThemeProvider theme={DARK_THEME}>
-          {/* <GetUser> */}
-          <FontsVTBGroup />
-          <App />
-          {/* </GetUser> */}
-        </ThemeProvider>
-      </ReactQuery>
+      <DropdownProvider>
+        <ReactQuery>
+          <ThemeProvider theme={LIGHT_THEME}>
+            {/* <GetUser> */}
+            <FontsVTBGroup />
+            <App />
+            {/* </GetUser> */}
+          </ThemeProvider>
+        </ReactQuery>
+      </DropdownProvider>
     </React.StrictMode>,
     rootElement
   )

@@ -1,3 +1,5 @@
+import { Button, InputField } from '@admiral-ds/react-ui'
+
 import './index.css'
 
 import axios from 'axios'
@@ -31,14 +33,12 @@ export default function Login(): JSX.Element {
         render={(formProps) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <div style={{ width: '300px', display: 'flex', flexDirection: 'column' }}>
-                <div>
-                  <div>Analitics</div>
-                </div>
-                <Field<string> name="username" required component="input" />
-                <Field<string> name="password" required component="input" />
-                <button type="submit">login</button>
-              </div>
+              <h1 style={{ textAlign: 'center' }}>ANALYTICS</h1>
+              <Field<string> name="username">{({ input }) => <InputField {...input} />}</Field>
+              <Field<string> name="password" required>
+                {({ input }) => <InputField {...input} />}
+              </Field>
+              <Button type="submit">Войти</Button>
             </form>
           )
         }}

@@ -13,7 +13,7 @@ const Root = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: bisque;
+  background-color: #a7a7a7ea;
 `
 
 export default function Header(): JSX.Element {

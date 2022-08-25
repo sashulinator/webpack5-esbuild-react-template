@@ -5,3 +5,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.Login form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+.Login form > * {
+  margin-top: 24px;
+}
