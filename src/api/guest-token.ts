@@ -17,6 +17,10 @@ export async function fetchGuestToken() {
         type: 'dashboard',
         id: 'b2d75c0c-9e27-41d3-9bd9-c02182aa5b7c',
       },
+      {
+        type: 'dashboard',
+        id: 'a97aeab2-5ac0-427e-a84d-37a3b66c3e53',
+      },
     ],
   })
 
