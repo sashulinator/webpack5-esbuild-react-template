@@ -1,5 +1,7 @@
 import { Button } from '@admiral-ds/react-ui'
 
+import './header.css'
+
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -21,9 +23,11 @@ export default function Header(): JSX.Element {
   return (
     <Root className="Header">
       <div>LOGO</div>
-      <Link to={ROUTES.ANALYTIC1.PATH}>График1</Link>
-      <Link to={ROUTES.ANALYTIC2.PATH}>График2</Link>
-      <Link to={ROUTES.ANALYTIC3.PATH}>График3</Link>
+      <div className="links">
+        <Link to={ROUTES.ANALYTIC1.PATH}>График1</Link>
+        <Link to={ROUTES.ANALYTIC2.PATH}>График2</Link>
+        <Link to={ROUTES.ANALYTIC3.PATH}>График3</Link>
+      </div>
       <Button dimension="s" onClick={() => history.push(ROUTES.LOGIN.PATH)}>
         Выйти
       </Button>

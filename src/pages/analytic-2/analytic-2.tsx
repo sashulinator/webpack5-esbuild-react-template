@@ -17,7 +17,7 @@ export default function Analytic2(): JSX.Element {
         fetchGuestToken,
         dashboardUiConfig: { hideTitle: true },
       }).catch((error) => {
-        console.log(error)
+        console.log('error', error)
       })
     }
   })
