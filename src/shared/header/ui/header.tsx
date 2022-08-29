@@ -1,7 +1,7 @@
 import { Button } from '@admiral-ds/react-ui'
 
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import ROUTES from '@/constants/routes'
@@ -21,6 +21,9 @@ export default function Header(): JSX.Element {
   return (
     <Root className="Header">
       <div>LOGO</div>
+      <Link to={ROUTES.ANALYTIC1.PATH}>График1</Link>
+      <Link to={ROUTES.ANALYTIC2.PATH}>График2</Link>
+      <Link to={ROUTES.ANALYTIC3.PATH}>График3</Link>
       <Button dimension="s" onClick={() => history.push(ROUTES.LOGIN.PATH)}>
         Выйти
       </Button>

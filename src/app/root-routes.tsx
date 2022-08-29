@@ -3,6 +3,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import Analytic1 from '@/pages/analytic-1/analytic-1'
+import Analytic2 from '@/pages/analytic-2/analytic-2'
+import Analytic3 from '@/pages/analytic-3/analytic-3'
 import LoginPage from '@/pages/login'
 import NotFoundPage from '@/pages/not-found/not-found'
 import UserProfilePage from '@/pages/user-profile/user-profile'
@@ -30,6 +32,12 @@ export default function RootRoutes() {
       </RouteAny>
       <RouteAny path={ROUTES.ANALYTIC1.PATH}>
         <Analytic1 />
+      </RouteAny>
+      <RouteAny path={ROUTES.ANALYTIC2.PATH}>
+        <Analytic2 />
+      </RouteAny>
+      <RouteAny path={ROUTES.ANALYTIC3.PATH}>
+        <Analytic3 />
       </RouteAny>
       <RouteAny path="*">
         <NotFoundPage />

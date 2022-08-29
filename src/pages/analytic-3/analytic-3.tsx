@@ -1,12 +1,12 @@
 import { embedDashboard } from '@superset-ui/embedded-sdk'
 
-import './analytic-1.css'
+import './analytic-3.css'
 
 import React, { useLayoutEffect } from 'react'
 
 import { fetchGuestToken } from '@/api/guest-token'
 
-export default function Analytic1(): JSX.Element {
+export default function Analytic3(): JSX.Element {
   useLayoutEffect(() => {
     const el3 = document.getElementById('analytic3')
     if (el3) {
@@ -24,7 +24,7 @@ export default function Analytic1(): JSX.Element {
 
   return (
     <main className="Main Analytic1" style={{ padding: '32px' }}>
-      <div className="analytic" id="analytic1" style={{ width: '100%' }} />
+      <div className="analytic" id="analytic3" style={{ width: '100%' }} />
     </main>
   )
 }

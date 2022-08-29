@@ -24,6 +24,22 @@ const ROUTES = {
       layout: ['main', 'header'],
     },
   }),
+
+  ANALYTIC2: new Route({
+    name: 'Analytic',
+    path: '/analytic-2',
+    payload: {
+      layout: ['main', 'header'],
+    },
+  }),
+
+  ANALYTIC3: new Route({
+    name: 'Analytic',
+    path: '/analytic-3',
+    payload: {
+      layout: ['main', 'header'],
+    },
+  }),
   // return id ? `${this.PATH}/${id}` : this.PATH
 }
 
