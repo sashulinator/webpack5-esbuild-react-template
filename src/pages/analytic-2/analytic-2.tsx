@@ -1,10 +1,9 @@
-import { embedDashboard } from '@superset-ui/embedded-sdk'
-
 import './analytic-2.css'
 
 import React, { useLayoutEffect } from 'react'
 
 import { fetchGuestToken } from '@/api/guest-token'
+import { embedDashboard } from '@/utils/embed-dashboard'
 
 export default function Analytic2(): JSX.Element {
   useLayoutEffect(() => {
