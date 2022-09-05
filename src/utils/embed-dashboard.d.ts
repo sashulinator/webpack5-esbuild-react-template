@@ -1,3 +1,5 @@
+import { AnyRecord } from '@/types/common'
+
 /**
  * The function to fetch a guest token from your Host App's backend server.
  * The Host App backend must supply an API endpoint
@@ -22,6 +24,7 @@ export declare type EmbedDashboardParams = {
   dashboardUiConfig?: UiConfigType
   /** Are we in debug mode? */
   debug?: boolean
+  searchQueries?: AnyRecord
 }
 export declare type Size = {
   width: number
@@ -41,4 +44,5 @@ export declare function embedDashboard({
   fetchGuestToken,
   dashboardUiConfig,
   debug,
+  searchQueries,
 }: EmbedDashboardParams): Promise<EmbeddedDashboard>

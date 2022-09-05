@@ -13,6 +13,8 @@ var _switchboard = require('@superset-ui/switchboard')
 
 var _guestTokenRefresh = require('@superset-ui/embedded-sdk/lib/guestTokenRefresh')
 
+var qs = require('qs')
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -37,7 +39,7 @@ var _guestTokenRefresh = require('@superset-ui/embedded-sdk/lib/guestTokenRefres
  * Embeds a Superset dashboard into the page using an iframe.
  */
 async function embedDashboard(_ref) {
-  let { id, supersetDomain, mountPoint, fetchGuestToken, dashboardUiConfig, debug = false } = _ref
+  let { id, supersetDomain, mountPoint, fetchGuestToken, dashboardUiConfig, debug = false, searchQueries } = _ref
 
   function log() {
     if (debug) {
@@ -117,7 +119,9 @@ async function embedDashboard(_ref) {
         )
       })
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      iframe.src = `${supersetDomain}/embedded/${id}${dashboardConfig}`
+      iframe.src = `${supersetDomain}/embedded/${id}${dashboardConfig}${qs.stringify(searchQueries, {
+        addQueryPrefix: true,
+      })}`
       mountPoint.replaceChildren(iframe)
       log('placed the iframe')
     })
