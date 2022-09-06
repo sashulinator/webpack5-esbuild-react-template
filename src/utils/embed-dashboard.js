@@ -119,9 +119,7 @@ async function embedDashboard(_ref) {
         )
       })
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      iframe.src = `${supersetDomain}/embedded/${id}${dashboardConfig}${qs.stringify(searchQueries, {
-        addQueryPrefix: true,
-      })}`
+      iframe.src = `${supersetDomain}/embedded/${id}${dashboardConfig}&${qs.stringify(searchQueries)}`
       mountPoint.replaceChildren(iframe)
       log('placed the iframe')
     })

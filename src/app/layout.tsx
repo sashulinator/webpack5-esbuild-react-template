@@ -36,7 +36,7 @@ export default function Layer(): null | JSX.Element {
   const layout = getCurrent(ROUTES)?.PAYLOAD.layout.sort() || notFoundLayout
 
   return (
-    <PerfectScrollbar className={clsx('Layout', layout.join('-'))} style={{ zIndex: 300 }}>
+    <PerfectScrollbar className={clsx('Layout', layout.join('-'))}>
       <DocumentTitle />
       {layout.includes('header') && <Header />}
       {layout.includes('nav') && <div className="NavPanel">NavPanel</div>}

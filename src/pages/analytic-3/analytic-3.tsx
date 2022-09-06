@@ -1,11 +1,16 @@
-import { Button, DropMenu, MenuItem, RenderOptionProps } from '@admiral-ds/react-ui'
+import { Option, SelectField } from '@admiral-ds/react-ui'
 
 import './analytic-3.css'
 
-import React, { useLayoutEffect, useMemo } from 'react'
+import { creditTypeItems } from './credit-type'
+import { sourceItems } from './source'
+import { tonalityItems } from './tonality'
+import * as qs from 'qs'
+import React, { useLayoutEffect } from 'react'
 
 import { fetchGuestToken } from '@/api/guest-token'
 import history from '@/app/history'
+import { getValue } from '@/lib/dom-utils'
 import { AnyRecord } from '@/types/common'
 import { embedDashboard } from '@/utils/embed-dashboard'
 import { useSearchQueries } from '@/utils/search-queries/use-search-queries'
@@ -29,63 +34,62 @@ export default function Analytic3(): JSX.Element {
     }
   }, [searchQueries])
 
-  const items = [
-    {
-      id: 'позитив',
-      label: 'позитив',
-      value: 'позитив',
-    },
-    {
-      id: 'негатив',
-      label: 'негатив',
-      value: 'негатив',
-    },
-    {
-      id: 'нейтрально',
-      label: 'нейтрально',
-      value: 'нейтрально',
-    },
-  ]
-
-  const model = useMemo(() => {
-    return items.map((item) => ({
-      id: item.id,
-      render: function MenuItemRender(options: RenderOptionProps) {
-        return (
-          <MenuItem dimension="s" {...options} key={item.id}>
-            {item.label}
-          </MenuItem>
-        )
-      },
-    }))
-  }, [])
-
   return (
     <main className="Main Analytic1" style={{ padding: '32px' }}>
-      <section style={{ display: 'flex', flexDirection: 'row' }}>
-        <div className="analytic" id="analytic3" style={{ width: '100%' }} />
-        <DropMenu
-          style={{ zIndex: '100000' }}
-          items={model}
-          onChange={(id) => {
-            console.log(`selected: ${id}`)
-            history.push(`?tonality=${id}`)
-          }}
-          // onOpen={onOpenMenu}
-          // onClose={onCloseMenu}
-          // dimension={args.dimension}
-          // disabled={args.disabled}
-          // selected={selected}
-          renderContentProp={({ buttonRef, handleKeyDown, handleClick, statusIcon }) => {
-            return (
-              <Button ref={buttonRef as React.Ref<HTMLButtonElement>} onKeyDown={handleKeyDown} onClick={handleClick}>
-                Нажми
-                {statusIcon}
-              </Button>
-            )
-          }}
-        />
+      <section style={{ display: 'flex', flexDirection: 'row', marginBottom: '24px' }}>
+        <div style={{ width: '300px' }}>
+          <SelectField
+            id="tonality"
+            label="Тональность"
+            value={searchQueries.tonality}
+            onChange={(event) => {
+              const tonality = getValue(event)
+              history.push(qs.stringify({ ...searchQueries, tonality }, { addQueryPrefix: true }))
+            }}
+          >
+            {tonalityItems.map((option) => (
+              <Option key={option.value} value={option.value}>
+                {option.label}
+              </Option>
+            ))}
+          </SelectField>
+        </div>
+        <div style={{ width: '300px', marginLeft: '24px' }}>
+          <SelectField
+            id="source"
+            label="Источник"
+            value={searchQueries.source}
+            onChange={(event) => {
+              const source = getValue(event)
+              history.push(qs.stringify({ ...searchQueries, source }, { addQueryPrefix: true }))
+            }}
+          >
+            {sourceItems.map((option) => (
+              <Option key={option.value} value={option.value}>
+                {option.label}
+              </Option>
+            ))}
+          </SelectField>
+        </div>
+        <div style={{ width: '300px', marginLeft: '24px' }}>
+          <SelectField
+            id="creditType"
+            label="Тип счёта"
+            value={searchQueries.creditType}
+            onChange={(event) => {
+              const creditType = getValue(event)
+              history.push(qs.stringify({ ...searchQueries, creditType }, { addQueryPrefix: true }))
+            }}
+          >
+            {creditTypeItems.map((option) => (
+              <Option key={option.value} value={option.value}>
+                {option.label}
+              </Option>
+            ))}
+          </SelectField>
+        </div>
       </section>
+      <div className="analytic" id="analytic3" style={{ width: '100%' }} />
     </main>
   )
 }
