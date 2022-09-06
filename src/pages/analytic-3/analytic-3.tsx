@@ -2,15 +2,13 @@ import { Option, SelectField } from '@admiral-ds/react-ui'
 
 import './analytic-3.css'
 
-import { creditTypeItems } from './credit-type'
-import { sourceItems } from './source'
-import { tonalityItems } from './tonality'
-import * as qs from 'qs'
+import { creditTypeItems } from '../../constants/credit-type'
+import { sourceItems } from '../../constants/source'
+import { tonalityItems } from '../../constants/tonality'
 import React, { useLayoutEffect } from 'react'
 
 import { fetchGuestToken } from '@/api/guest-token'
-import history from '@/app/history'
-import { getValue } from '@/lib/dom-utils'
+import { applyNewQuery } from '@/lib/apply-new-query'
 import { AnyRecord } from '@/types/common'
 import { embedDashboard } from '@/utils/embed-dashboard'
 import { useSearchQueries } from '@/utils/search-queries/use-search-queries'
@@ -34,18 +32,18 @@ export default function Analytic3(): JSX.Element {
     }
   }, [searchQueries])
 
+  const render_id = JSON.stringify(searchQueries)
+
   return (
     <main className="Main Analytic1" style={{ padding: '32px' }}>
-      <section style={{ display: 'flex', flexDirection: 'row', marginBottom: '24px' }}>
+      <section key={render_id} style={{ display: 'flex', flexDirection: 'row', marginBottom: '24px' }}>
         <div style={{ width: '300px' }}>
           <SelectField
             id="tonality"
             label="Тональность"
             value={searchQueries.tonality}
-            onChange={(event) => {
-              const tonality = getValue(event)
-              history.push(qs.stringify({ ...searchQueries, tonality }, { addQueryPrefix: true }))
-            }}
+            displayClearIcon={searchQueries.tonality}
+            onChange={applyNewQuery('tonality', searchQueries)}
           >
             {tonalityItems.map((option) => (
               <Option key={option.value} value={option.value}>
@@ -58,11 +56,9 @@ export default function Analytic3(): JSX.Element {
           <SelectField
             id="source"
             label="Источник"
+            displayClearIcon={searchQueries.source}
             value={searchQueries.source}
-            onChange={(event) => {
-              const source = getValue(event)
-              history.push(qs.stringify({ ...searchQueries, source }, { addQueryPrefix: true }))
-            }}
+            onChange={applyNewQuery('source', searchQueries)}
           >
             {sourceItems.map((option) => (
               <Option key={option.value} value={option.value}>
@@ -73,13 +69,11 @@ export default function Analytic3(): JSX.Element {
         </div>
         <div style={{ width: '300px', marginLeft: '24px' }}>
           <SelectField
-            id="creditType"
+            id="credit_type"
             label="Тип счёта"
-            value={searchQueries.creditType}
-            onChange={(event) => {
-              const creditType = getValue(event)
-              history.push(qs.stringify({ ...searchQueries, creditType }, { addQueryPrefix: true }))
-            }}
+            value={searchQueries.credit_type}
+            displayClearIcon={searchQueries.credit_type}
+            onChange={applyNewQuery('credit_type', searchQueries)}
           >
             {creditTypeItems.map((option) => (
               <Option key={option.value} value={option.value}>
