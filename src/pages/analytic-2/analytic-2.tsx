@@ -4,10 +4,8 @@ import './analytic-2.css'
 
 import React, { useLayoutEffect } from 'react'
 
+import { useGetOptions } from '@/api/graphic'
 import { fetchGuestToken } from '@/api/guest-token'
-import { creditTypeItems } from '@/constants/credit-type'
-import { sourceItems } from '@/constants/source'
-import { tonalityItems } from '@/constants/tonality'
 import { applyNewQuery } from '@/lib/apply-new-query'
 import { AnyRecord } from '@/types/common'
 import { embedDashboard } from '@/utils/embed-dashboard'
@@ -15,6 +13,8 @@ import { useSearchQueries } from '@/utils/search-queries/use-search-queries'
 
 export default function Analytic2(): JSX.Element {
   const searchQueries = useSearchQueries<AnyRecord>()
+
+  const { data } = useGetOptions(2)
 
   useLayoutEffect(() => {
     const el2 = document.getElementById('analytic2')
@@ -39,15 +39,15 @@ export default function Analytic2(): JSX.Element {
       <section key={render_id} style={{ display: 'flex', flexDirection: 'row', marginBottom: '24px' }}>
         <div style={{ width: '300px' }}>
           <SelectField
-            id="tonality"
-            label="Тональность"
-            value={searchQueries.tonality}
-            displayClearIcon={searchQueries.tonality}
-            onChange={applyNewQuery('tonality', searchQueries)}
+            id="credit_type"
+            label="Тип счёта"
+            value={searchQueries.credit_type}
+            displayClearIcon={searchQueries.credit_type}
+            onChange={applyNewQuery('credit_type', searchQueries)}
           >
-            {tonalityItems.map((option) => (
-              <Option key={option.value} value={option.value}>
-                {option.label}
+            {data?.credit_type.map((option) => (
+              <Option key={option} value={option}>
+                {option}
               </Option>
             ))}
           </SelectField>
@@ -60,24 +60,24 @@ export default function Analytic2(): JSX.Element {
             displayClearIcon={searchQueries.source}
             onChange={applyNewQuery('source', searchQueries)}
           >
-            {sourceItems.map((option) => (
-              <Option key={option.value} value={option.value}>
-                {option.label}
+            {data?.source.map((option) => (
+              <Option key={option} value={option}>
+                {option}
               </Option>
             ))}
           </SelectField>
         </div>
         <div style={{ width: '300px', marginLeft: '24px' }}>
           <SelectField
-            id="credit_type"
-            label="Тип счёта"
-            value={searchQueries.credit_type}
-            displayClearIcon={searchQueries.credit_type}
-            onChange={applyNewQuery('credit_type', searchQueries)}
+            id="tonality"
+            label="Тональность"
+            value={searchQueries.tonality}
+            displayClearIcon={searchQueries.tonality}
+            onChange={applyNewQuery('tonality', searchQueries)}
           >
-            {creditTypeItems.map((option) => (
-              <Option key={option.value} value={option.value}>
-                {option.label}
+            {data?.tonality.map((option) => (
+              <Option key={option} value={option}>
+                {option}
               </Option>
             ))}
           </SelectField>

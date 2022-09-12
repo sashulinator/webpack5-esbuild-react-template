@@ -10,6 +10,7 @@ module.exports = {
     port: 3003,
     historyApiFallback: true,
     proxy: {
+      '/api/v1/graphic': 'http://localhost:3000',
       '/api/v1': 'http://10.4.40.3:8088',
     },
   },
